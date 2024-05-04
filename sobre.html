@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Site Otaku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilo para o fundo do corpo da página */
+        body {
+            background-color: #333; /* Cinza escuro */
+            color: #fff; /* Texto branco */
+        }
+
+        /* Estilo para o rodapé */
+        footer {
+            background-color: #F0F8FF; /* Preto */
+            color: #fff; /* Texto branco */
+           /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra nas letras */
+            padding: 20px 0;
+        }
+
+        /* Estilo para frases inspiradoras */
+        .frases-inspiradoras {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff; /* Texto branco */
+        }
+
+        .frases-inspiradoras p {
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para o menu de navegação */
+        .navbar {
+            background-color: #FF6347; /* Vermelho */
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff; /* Texto branco */
+            font-weight: bold;
+            padding: 10px 15px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffc107; /* Amarelo */
+        }
+
+        /* Estilo para os cards de personagens */
+        .card {
+            background-color: #fff; /* Fundo branco */
+            color: #000; /* Texto preto */
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="inicio.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mangas.html">Mangás</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="personagens.html">Personagens</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre.html">Sobre</a>
+                </li>
+                <!-- Carrinho de Compras -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#cart"><i class="fas fa-shopping-cart"></i> Carrinho</a> <!-- Cart icon -->
+                </li>
+            </ul>
+    <form class="form-inline my-2 my-lg-0 mr-2">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Produtos" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+      
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="container-fluid mt-4">
+        <h2>Contacte o administrador</h2>
+        <form novalidate>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Seção de Informações de Contato do Administrador -->
+    <section id="info-contato-admin" class="container-fluid mt-4">
+        <h2>Informações de Contato do Administrador</h2>
+        <ul>
+            <li>Redes Sociais:
+                <ul>
+                    <li>Facebook: <a href="https://web.facebook.com/denyneves.francisco/">Link do Facebook</a></li>
+                    <li>Instagram: <a href="https://www.instagram.com/denyneves14/">Link do Instagram</a></li>
+                    <li>You tube: <a href="https://www.youtube.com/channel/UC0MCO3VVIRhdixqVaCf8R1w">Link do You tube</a></li>
+                </ul>
+            </li>
+            <li>Número de Telefone: (+244) 935995336</li>
+        </ul>
+    </section>
+    <section id="info-admin" class="container-fluid mt-4">
+        <h2>Informações do Administrador</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Imagem do Administrador -->
+                <img src="deny.jpg" class="img-fluid rounded admin-image" alt="Imagem do Administrador">
+            </div>
+            <div class="col-md-8">
+                <!-- Bibliografia do Administrador -->
+                <p>Este site foi criado por Augusto Netaniel Francisco Neves Rank Ninja S, com seu Codenome ((Itachi)), propriamente para os amantes de anime e mangá. Aqui você pode encontrar informações sobre seus títulos favoritos, discutir com outros fãs e descobrir novas séries para assistir e ler. Sinta-se livre para explorar e mergulhar no vasto universo otaku. Junte-se a nós nesta jornada emocionante e compartilhe sua paixão pelos mundos fantásticos que o anime e o mangá nos proporcionam. Navegue pelas páginas repletas de conteúdo exclusivo, mergulhe em debates animados e encontre sua próxima obsessão. Nosso objetivo é criar uma comunidade acolhedora e vibrante, onde todos os fãs se sintam em casa. Estamos aqui para celebrar a diversidade de histórias, personagens e culturas que o anime e o mangá nos oferecem. Entre, participe das conversas, faça novos amigos e embarque em aventuras inesquecíveis. Este é o seu espaço para se conectar, compartilhar e viver o fascínio do mundo otaku. Não perca tempo, venha fazer parte desta família e deixe sua marca no universo dos otaku. Juntos, podemos tornar este site um santuário para os verdadeiros entusiastas de anime e mangá. Seja bem-vindo(a) à sua nova casa virtual, onde cada página é uma porta para a imaginação sem limites. Entre como um fã, saia como um verdadeiro ninja otaku!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Formulário de Contato -->
+                    <h4>Envie-nos seu feedback:</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="feedback-nome">Nome:</label>
+                            <input type="text" class="form-control" id="feedback-nome" name="feedback-nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback-email">Email:</label>
+                            <input type="email" class="form-control" id="feedback-email" name="feedback-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback-mensagem">Mensagem:</label>
+                            <textarea class="form-control" id="feedback-mensagem" name="feedback-mensagem" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Feedback</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <!-- Conteúdo Adicional (Notícias, Blog, etc.) -->
+                    <h4>Últimas Notícias:</h4>
+                    <ul>
+                        <li><a href="#">Novo lançamento de anime: "Nome do Anime"</a></li>
+                        <li><a href="#">Entrevista exclusiva com o criador de "Nome do Mangá"</a></li>
+                        <li><a href="#">Convenção de anime "Nome do Evento": Recapitulação e destaques</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<footer class="footer mt-auto py-3 text-center">
+
+        <div class="container">
+
+            <span class="text-muted">© 2024 Meu Site Otaku. Todos os direitos reservados.</span>
+            <ul class="navbar-nav ml-auto">
+                <!-- Redes Sociais -->
+                <li class="nav-item redes-sociais">
+                    <a href="https://web.facebook.com/denyneves.francisco/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UC0MCO3VVIRhdixqVaCf8R1w"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/denyneves14/"><i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Ícones de redes sociais -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Script para validação de formulário e mensagem de sucesso -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+            // Aqui você pode adicionar a lógica para enviar os dados do formulário
+            // e exibir uma mensagem de sucesso ao usuário
+            alert('O formulário foi enviado com sucesso!');
+        });
+    </script>
+     <script>
+        // Pega o caminho da URL atual
+        var path = window.location.pathname;
+        // Remove a barra inicial
+        var page = path.split("/").pop();
+
+        // Encontra o link correspondente na barra de navegação e adiciona a classe 'active'
+        $('.navbar-nav .nav-link').each(function() {
+            var href = $(this).attr('href');
+            if (page == href) {
+                $(this).addClass('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
