@@ -8,30 +8,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Seus estilos personalizados aqui */
-        /* Estilo para o fundo do corpo da página */
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
             background-color: #333; /* Cinza escuro */
             color: #fff; /* Texto branco */
         }
 
         /* Estilo para o rodapé */
         footer {
-            background-color: #F0F8FF; /* Preto */
-            color: #000000; /* Texto branco */
-           /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra nas letras */
+            background-color: #F0F8FF; /* Azul claro */
+            color: #000000; /* Texto preto */
             padding: 20px 0;
+            width: 100%;
+            margin-top: auto; /* Empurra o rodapé para baixo na visualização */
         }
 
         /* Estilo para frases inspiradoras */
         .frases-inspiradoras {
             text-align: center;
             margin-top: 20px;
-            color: #fff; /* Texto branco */
         }
 
         .frases-inspiradoras p {
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra nas letras */
             margin-bottom: 10px;
         }
 
@@ -55,10 +56,16 @@
         .card {
             background-color: #fff; /* Fundo branco */
             color: #000; /* Texto preto */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra nas letras */
             margin-bottom: 30px;
             border-radius: 10px;
+            width: calc(100% - 60px); /* Subtrai 30px de cada lado para o padding */
+            transition: transform 0.3s ease-in-out;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
         .download-button {
             display: block;
             margin: 10px auto;
@@ -68,28 +75,23 @@
             text-decoration: none;
             border-radius: 5px;
         }
+
         .download-button:hover {
             background-color: #0056b3;
         }
+
         /* Estilo para os vídeos do YouTube */
         .youtube-video iframe {
             width: 100%;
-            height: 300px; /* Altura ajustável conforme necessário */
+            height: auto; /* Altura se ajusta automaticamente */
         }
+
         /* Estilo para o container principal */
         .container {
             padding: 20px;
-            margin-top: 50px;
-        }
-
-        /* Estilo para os cards de animes */
-        .card {
-            margin-bottom: 30px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+            margin: 0 auto;
+            width: 100%;
+            max-width: none;
         }
 
         /* Estilo para o título */
@@ -98,38 +100,22 @@
             margin-bottom: 50px;
             font-weight: bold;
         }
+
         /* Estilo para o ícone do site */
-            .icone-do-site {
-            position: rigth;
+        .icone-do-site {
+            position: right;
             top: 10px; /* Ajuste conforme necessário */
             right: 30px; /* Ajuste conforme necessário */
             z-index: 999; /* Certifique-se de que o ícone esteja acima de outros elementos */
         }
-            .container {
-            margin: 50px auto;
-            width: 80%;
-        }
-            .anime {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-            .anime img {
-            margin-right: 20px;
-        }
-            .rating {
-            font-size: 30px;
-            color: gold;
-        }
-        #animeList {
-            list-style-type: none;
-            padding: 0;
-        }
-        #animeList li {
-            display: none;
-        }
-        .filterBtn {
-            margin-right: 12px;
+
+        /* Ajustes para responsividade em diferentes tamanhos de tela */
+        @media (max-width: 768px) {
+            .container, .card, .youtube-video iframe {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
         }
     </style>
     </style>
