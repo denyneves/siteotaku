@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site OTaku - Contato</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Definição de cores */
+    $colors: (
+      one:     #990033,
+      two:     #161623,
+      negro:   #020202,
+      blanco:  #ffffff,
+      sombra:  #000000
+    );
+
+    @function color($color-name) {
+        @return map-get($colors, $color-name);
+    }
+
+    /* Mixin para display flex */
+    @mixin displayFlex($justify,$align,$direction) {
+        display: flex;
+        justify-content: $justify;
+        align-items: $align;
+        flex-direction: $direction;
+    }
+
+    /* Animação para mudança de cor */
+    @keyframes colorful{
+      0% {
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    /* Reset CSS */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+      outline: none;
+      appearance: none;
+      border-style: none;
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Estilos de fonte */
+    h1,h2,h3,span,p {
+      font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    }
+
+    /* Estilos gerais */
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background: #161623;
+    }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2em;
+    }
+
+    /* Barra de Navegação */
+    nav {
+      background-color: color(negro);
+      padding: 1em 2em;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav h1 {
+      color: color(blanco);
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: color(blanco);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: color(one);
+    }
+
+    /* Conteúdo */
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 6em 1em; /* Ajustado para exibir abaixo da barra de navegação */
+    }
+
+    .card {
+      position: relative;
+      width: 400px; /* Aumentando a largura da card */
+      height: auto; /* Altura adaptável */
+      margin: 1em;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(40px);
+      border: solid 2px transparent;
+      background-clip: padding-box;
+      box-shadow: 0px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+
+    .content {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0.5;
+      transition: 0.5s;
+      flex: 1;
+
+      .img {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 10px solid rgba(0,0,0,.25);
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .cardContent {
+        text-align: center;
+
+        h3 {
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 500;
+          font-size: 18px;
+          margin: 20px 0 10px;
+          line-height: 1.1em;
+
+          span {
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: initial;
+          }
+        }
+      }
+    }
+
+    .sci {
+      position: absolute;
+      bottom: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        margin: 0 10px;
+        transform: translateY(40px);
+        opacity: 0;
+        transition: 0.5s;
+        transition-delay: calc(0.1s * var(--i));
+
+        a {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .card:hover .content {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+
+    .card:hover .sci li {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <nav style="font-family: 'Arial', sans-serif;">
+    <h1>Meu site Otaku</h1>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="index.html" class="active">Início</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="card">
+      <div class="content">
+        <div class="img"><img src="https://unsplash.it/200/200"></div>
+        <div class="cardContent">
+          <h3>Deny Neves<br><span>Web Developer</span></h3>
+          <p>Deny é um desenvolvedor web apaixonado por criar experiências digitais incríveis. Ele tem experiência em front-end e back-end, e adora trabalhar em projetos desafiadores.</p>
+          <p>E-mail: denyneves14@gmail.com</p>
+          <p>Telefone: (+244) 935-995-336</p>
+        </div>
+      </div>
+      <ul class="sci">
+        <li style="--i:1">
+          <a href="https://web.facebook.com/denyneves.francisco/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li style="--i:2">
+          <a href="https://www.instagram.com/denyneves14/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </li>
+        <li style="--i:3">
+          <a href="https://www.youtube.com/channel/UC0MCO3VVIRhdixqVaCf8R1w"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="img"><img src="https://unsplash.it/200/201"></div>
+        <div class="cardContent">
+          <h3>Memeiro Itachi<br><span>Grafic Designer</span></h3>
+          <p>Memeiro é um designer gráfico talentoso com uma paixão por criar artes visuais únicas e memoráveis. Ele tem habilidades em ilustração digital, design de logotipo e manipulação de fotos.</p>
+          <p>E-mail: denyneves14@gmail.com</p>
+          <p>Telefone: (+244) 935-995-336</p>
+        </div>
+      </div>
+      <ul class="sci">
+        <li style="--i:1">
+          <a href="https://web.facebook.com/denyneves.francisco/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li style="--i:2">
+          <a href="https://www.instagram.com/denyneves14/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </li>
+        <li style="--i:3">
+          <a href="https://www.youtube.com/channel/UC0MCO3VVIRhdixqVaCf8R1w"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+</body>
+</html>

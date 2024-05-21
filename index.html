@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site Otaku - Animes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Definindo as cores */
+    :root {
+      --background-color: #161623;
+      --text-color: #ffffff;
+      --accent-color: #990033;
+      --glass-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Estilos gerais */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Estilo do cabeçalho */
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: var(--accent-color);
+    }
+
+    /* Barra de navegação */
+    nav {
+      background-color: var(--background-color);
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Estilo do Catálogo de Animes */
+    .anime-catalog {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .anime-item {
+      width: 200px;
+      padding: 20px;
+      background-color: var(--glass-color);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .anime-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .anime-item h3 {
+      font-size: 1.5em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .anime-item p {
+      color: #ccc;
+    }
+
+    /* Efeito de Hover */
+    .anime-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Botão de Ver mais detalhes */
+    .details-btn {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .details-btn:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Detalhes do Anime */
+    .details {
+      margin-top: 10px;
+    }
+    .details {
+    display: none;
+    }
+.footer-glass {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+  padding: 40px 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que os elementos do footer sejam envolvidos */
+  justify-content: space-between;
+  align-items: flex-start; /* Alinhar os itens ao início do eixo transversal (vertical) */
+  position: relative;
+}
+
+.footer-section {
+  flex: 1;
+  margin-bottom: 20px; /* Adicionar espaço entre as seções do footer */
+}
+
+
+.footer-heading {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #55acee;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #55acee;
+}
+
+.footer-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 300px; /* Defina o tamanho desejado */
+  height: auto; /* Manter a proporção da imagem */
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+}
+
+    /* Estilo do botão de voltar ao topo */
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #990033;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #myBtn:hover {
+      background-color: #b53b50;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .anime-item {
+        width: 100%;
+      }
+    }
+    .anime-queue {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.anime-queue {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Para navegadores que suportam */
+  -ms-overflow-style: none; /* Para navegadores que suportam */
+}
+
+.anime-queue::-webkit-scrollbar {
+  display: none; /* Para navegadores WebKit */
+}
+
+.anime-card {
+  margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  flex: 0 0 auto;
+  width: 200px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  span {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    }
+      .anime-card {
+    position: relative;
+    }
+
+        .play-icon {
+        position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 20px;
+    }
+
+      .play-icon i {
+      color: white;
+      font-size: 40px;
+    }
+     /* Estilo para a lista de animes e botões de filtro */
+    #lista-animes {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #lista-animes button {
+      background-color: #990033;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    #lista-animes button:hover {
+      background-color: #7a0022;
+    }
+
+    /* Barra de Pesquisa */
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-container input[type=text] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-right: 10px;
+      width: 60%;
+      transition: width 0.4s ease-in-out;
+    }
+
+    .search-container input[type=text]:focus {
+      width: 70%;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+      /* Estilos para ocultar o botão de voltar ao topo por padrão */
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: black;
+  }
+    /* Estilos CSS para ocultar e mostrar detalhes */
+  .details {
+    display: none;
+  }
+  .details-btn {
+    margin-top: 10px;
+  }
+    /* Seus estilos CSS aqui... */
+  .anime-item {
+    transition: filter 0.3s ease;
+  }
+  .anime-item.faded {
+    filter: blur(3px); /* Aplica o efeito de desfoque */
+  }
+  /* Estilo para a lista de letras */
+#alphabet-menu {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#alphabet-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#alphabet-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.anime-item {
+      width: 200px;
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .details {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .anime-item:hover .details {
+      display: block;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Seja Bem Vindo Meu Site Otaku</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+<div id="alphabet-menu"></div>
+
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Pesquisar...">
+    <button onclick="searchAnimes()"><i class="fa fa-search"></i></button>
+  </div>
+
+  <div id="lista-animes">
+    <button onclick="showAll()">Todos</button>
+    <button onclick="filterByGenre('Ação')">Ação</button>
+    <button onclick="filterByGenre('Filme')">Filme</button>
+    <button onclick="filterByGenre('Ficção')">Ficção</button>
+    <button onclick="filterByGenre('Comédia')">Comédia</button>
+    <button onclick="filterByGenre('Aventura')">Aventura</button>
+    <button onclick="filterByGenre('Isekai')">Isekai</button>
+    <button onclick="filterByGenre('Echi')">Echi</button>
+  </div>
+  <!-- Linha separadora -->
+  <hr class="separator">
+<h1>Animes Recentes</h1>
+<div class="anime-queue">
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/ninja-kamui/">
+      <img src="ninja.jpg" alt="Anime 1">
+      <span>Ninja Kamui</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/wind-breaker-dublado/">
+      <img src="card (1).jpg" alt="Anime 2">
+      <span>Wind Breaker</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/kaijuu-8-gou-dublado/">
+      <img src="card (2).jpg" alt="Anime 2">
+      <span>Kaiju Eigth</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/kenka-dokugaku/">
+      <img src="card (3).jpg" alt="Anime 2">
+      <span>kenka dokugaku</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/one-piece/">
+      <img src="card (4).jpg" alt="Anime 2">
+      <span>One Piece</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/boku-no-hero-academia-7/">
+      <img src="card (5).jpg" alt="Anime 2">
+      <span>My Hero Academy</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/upando-sozinho/">
+      <img src="card (6).jpg" alt="Anime 2">
+      <span>Solo Leveling</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/31672/">
+      <img src="card (7).jpg" alt="Anime 2">
+      <span>Jujutsu Kaisen</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/mashle-2-dublado/">
+      <img src="card (8).jpg" alt="Anime 2">
+      <span>Mashle Muscle</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/naruto-shippuden/">
+      <img src="card (9).jpg" alt="Anime 2">
+      <span>Naruto Shippuden</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/ragna-crimson/">
+      <img src="card (10).jpg" alt="Anime 2">
+      <span>Ragna Crimson</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <!-- Adicione mais cards conforme necessário -->
+
+</div>
+   <!-- Linha separadora -->
+  <hr class="separator">
+
+<h1>Animes Epícos</h1>
+<div class="anime-queue">
+
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/blade-of-the-guardians/">
+      <img src="card (11).jpg" alt="Anime 1">
+      <span>blade of the guardians</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/tensei-shitara-slime-datta-ken-3/">
+      <img src="card (12).jpg" alt="Anime 2">
+      <span>tensei shitara</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/tokyo-revengers-tenjiku-hen/">
+      <img src="card (13).jpg" alt="Anime 2">
+      <span>Tokyo Revengers</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/fullmetal-alchemist-brotherhood/">
+      <img src="card (14).jpg" alt="Anime 2">
+      <span>Full Metal Alchimist</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/bleach-sennen-kessen-hen-dublado/">
+      <img src="card (15).jpg" alt="Anime 2">
+      <span>Bleach Sennen Kessen</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/kimetsu-no-yaiba-hashira-geiko-hen/">
+      <img src="card (16).jpg" alt="Anime 2">
+      <span>Kimetsu No Yaiba</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/left-hand-layup/">
+      <img src="card (17).jpg" alt="Anime 2">
+      <span>left hand layup</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/undead-unluck/">
+      <img src="card (18).jpg" alt="Anime 2">
+      <span>Undead Unlock</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/fairy-tail/">
+      <img src="card (19).jpg" alt="Anime 2">
+      <span>Fairy Tail</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/tate-no-yuusha-no-nariagari-3-dublado/">
+      <img src="card (20).jpg" alt="Anime 2">
+      <span>Tate No Yuusha</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/animes/nanatsu-no-taizai-mokushiroku-no-yonkishi/">
+      <img src="card (21).jpg" alt="Anime 2">
+      <span>Nanatsu No Taizai</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <!-- Adicione mais cards conforme necessário -->
+
+</div>
+
+    <!-- Linha separadora -->
+<hr class="separator" style="border: none; height: 2px; background-color: #990033; margin: 20px 0;">
+
+<h1>Filmes De Anime</h1>
+<div class="anime-queue">
+
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/kung-fu-panda-4-dublado/">
+      <img src="card (22).jpg" alt="Anime 1">
+      <span>kung Fu Panda</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/one-piece-red/">
+      <img src="card (23).jpg" alt="Anime 2">
+      <span>One Piece Red</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/jujutsu-kaisen-0-movie/">
+      <img src="card (24).jpg" alt="Anime 2">
+      <span>Jujutsu Kaisen 0</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/boruto-naruto-the-movie-dublado/">
+      <img src="card (25).jpg" alt="Anime 2">
+      <span>Boruto Next Generation</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/no-game-no-life-zero/">
+      <img src="card (27).jpg" alt="Anime 2">
+      <span>No Game Life</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/monsters-ippyaku-sanjou-hiryuu-jigoku/">
+      <img src="card (28).jpg" alt="Anime 2">
+      <span>Monsters Ippyaku</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/a-lenda-de-beowulf/">
+      <img src="card (29).jpg" alt="Anime 2">
+      <span>A Lenda De Beowulf</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/ao-no-exorcist-movie/">
+      <img src="card (30).jpg" alt="Anime 2">
+      <span>Ao No Exorcist</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/bakuten-movie/">
+      <img src="card (20).jpg" alt="Anime 2">
+      <span>Bakuten Movie</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/kono-subarashii-sekai-ni-shukufuku-wo-movie-kurenai-densetsu/">
+      <img src="card (32).jpg" alt="Anime 2">
+      <span>Kono-subarashii</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://animesonline.nz/filmes/boku-no-hero-academia-the-movie-2-heroes-rising-dublado//">
+      <img src="card (26).jpg" alt="Anime 2">
+      <span>Boku No Hero Movie</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <!-- Adicione mais cards conforme necessário -->
+</div>
+
+<hr class="separator" style="border: none; height: 2px; background-color: #990033; margin: 20px 0;">
+
+  <h1>Filmes Diversos</h1>
+<div class="anime-queue">
+
+  <div class="anime-card">
+    <a href="https://filmesmega.online/os-cavaleiros-do-zodiaco-saint-seiya-1a-temporada-dual-audio/">
+      <img src="filme.jpg" alt="Anime 1">
+      <span>Saint Seya</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/percy-jackson-e-o-mar-de-monstros-dual-audio/">
+      <img src="filme1.jpg" alt="Anime 2">
+      <span>Percy Jackson</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/ritual-de-inverno-dual-audio/">
+      <img src="filme2.jpg" alt="Anime 2">
+      <span>Ritual de Inverno</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/o-pequenino-dublado/">
+      <img src="filme3.jpg" alt="Anime 2">
+      <span>O Pequenino</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/pequenos-espioes-apocalipse-dual-audio/">
+      <img src="filme4.jpg" alt="Anime 2">
+      <span>Pequenos Espiões</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/madame-teia-dual-audio/">
+      <img src="filme5.jpg" alt="Anime 2">
+      <span>Madame Teia</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/missao-impossivel-acerto-de-contas-parte-1-dual-audio/">
+      <img src="filme6.jpg" alt="Anime 2">
+      <span>Missão Impossivel</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/projeto-extracao-dual-audio/">
+      <img src="filme7.jpg" alt="Anime 2">
+      <span>Projeto Extracao</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/o-retorno-dos-thundermans-dual-audio/">
+      <img src="filme8.jpg" alt="Anime 2">
+      <span>O Retorno Dos Thundermans</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/transformers-o-despertar-das-feras-dual-audio/">
+      <img src="filme9.jpg" alt="Anime 2">
+      <span>Transformers O Despertar</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/beekeeper-rede-de-vinganca-dual-audio/">
+      <img src="filme10.jpg" alt="Anime 2">
+      <span>Beekeeper</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+
+  <!-- Adicione mais cards conforme necessário -->
+</div>
+<hr class="separator" style="border: none; height: 2px; background-color: #990033; margin: 20px 0;">
+
+<div class="anime-queue">
+  <div class="anime-card">
+    <a href="https://filmesmega.online/avatar-o-ultimo-mestre-do-ar-1a-temporada-dual-audio/">
+      <img src="filme11.jpg" alt="Anime 1">
+      <span>Avatar</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/as-marvels-dual-audio/">
+      <img src="filme12.jpg" alt="Anime 2">
+      <span>As Marvels</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/gran-turismo-de-jogador-a-corredor-dual-audio/">
+      <img src="filme13.jpg" alt="Anime 2">
+      <span>Gran Turismo</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/aquaman-2-o-reino-perdido-dual-audio/">
+      <img src="filme14.jpg" alt="Anime 2">
+      <span>AQua Man 2</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/o-doutrinador-a-serie-1a-temporada-dual-audio/">
+      <img src="filme15.jpg" alt="Anime 2">
+      <span>Doutrinador</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/300-dual-audio/">
+      <img src="filme16.jpg" alt="Anime 2">
+      <span>300</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/os-quatro-3-a-batalha-final-dual-audio/">
+      <img src="filme17.jpg" alt="Anime 2">
+      <span>Os Quatro 3</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/os-quatro-2-reino-sem-lei-dual-audio/">
+      <img src="filme18.jpg" alt="Anime 2">
+      <span>Os Quatro 2</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/a-freira-2-dual-audio/">
+      <img src="filme19.jpg" alt="Anime 2">
+      <span>A Freira 2</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/nao-adianta-rezar-dublado/">
+      <img src="filme20.jpg" alt="Anime 2">
+      <span>Não Adianta Rezar</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  <div class="anime-card">
+    <a href="https://filmesmega.online/annabelle-2-a-criacao-do-mal-dual-audio/">
+      <img src="filme21.jpg" alt="Anime 2">
+      <span>Anabelle 2</span>
+      <div class="play-icon"><i class="fas fa-play"></i></div>
+    </a>
+  </div>
+  
+  <!-- Adicione mais cards conforme necessário -->
+</div>
+
+<hr class="separator" style="border: none; height: 2px; background-color: #990033; margin: 20px 0;">
+
+  <button onclick="topFunction()" id="myBtn" title="Voltar ao Topo">Topo</button>
+
+<footer class="footer-glass">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3 class="footer-heading">Links Úteis</h3>
+      <a href="#" class="footer-link">Termos de Serviço</a>
+      <a href="#" class="footer-link">Política de Privacidade</a>
+      <a href="#" class="footer-link">Sobre Nós</a>
+      <a href="#" class="footer-link">Suporte</a>
+      <a href="#" class="footer-link">Anuncie</a>
+      <a href="#" class="footer-link">FAQ</a>
+      <a href="#" class="footer-link">Contato</a>
+    </div>
+    <div class="footer-section">
+      <h3 class="footer-heading">Informações</h3>
+      <p>Email: denyneves14@gmail.com</p>
+      <p>Contato: (+244) 935-995-336</p>
+      <p>Site Vizinho: <a href="#" class="footer-link">www.siteteste.com</a></p>
+      <p>Parceiros: <a href="https://myanimelist.net/" class="footer-link">Myanimelist</a>
+        <a href="https://www.crunchyroll.com/" class="footer-link">crunchyroll</a>
+        <a href="https://animesonline.nz/" class="footer-link">animesonline.nz</a></p>
+    </div>
+    <div class="footer-section">
+      <h3 class="footer-heading">Siga-nos</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-youtube"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-pinterest"></i></a>
+      </div>
+    </div>
+    <img src="itachi.ico.png" alt="Logo" class="footer-logo">
+  </div>
+  <div class="footer-bottom">
+    <h3>&copy; 2024 Meu Site Otaku. Todos os direitos reservados.</h3>
+  </div>
+</footer>
+
+
+<script>
+  function searchAnimes() {
+    var input, filter, cards, card, title, i;
+    input = document.getElementById("search-bar");
+    filter = input.value.toUpperCase();
+    
+    // Ocultar todos os cards
+    var allCards = document.querySelectorAll(".anime-card");
+    allCards.forEach(function(card) {
+      card.style.display = "none";
+    });
+    
+    // Selecionar todas as divs que contêm os animes
+    var animeContainers = document.querySelectorAll(".anime-queue, .anime-catalog");
+
+    animeContainers.forEach(function(container) {
+      cards = container.querySelectorAll(".anime-card");
+      for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        title = card.querySelector("span");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+          card.style.display = ""; // Exibir o card se corresponder à pesquisa
+          card.classList.remove("faded"); // Remover o efeito de desfoque
+          if (i !== 0) {
+            // Mover o card pesquisado para o topo do contêiner de todos os cards
+            card.parentNode.insertBefore(card, card.parentNode.firstChild);
+          }
+        }
+      }
+    });
+  }
+
+  function showAll() {
+    var cards = document.querySelectorAll(".anime-card");
+    cards.forEach(function(card) {
+      card.style.display = ""; // Exibir todos os cards
+      card.classList.remove("faded"); // Remover o efeito de desfoque
+    });
+  }
+
+  function filterByGenre(genre) {
+    var cards = document.querySelectorAll(".anime-card");
+    cards.forEach(function(card) {
+      var description = card.querySelector("span");
+      if (description.innerText.toUpperCase().indexOf(genre.toUpperCase()) > -1) {
+        card.style.display = ""; // Exibir o card se corresponder ao gênero
+        card.classList.remove("faded"); // Remover o efeito de desfoque
+      } else {
+        card.style.display = "none"; // Ocultar o card se não corresponder ao gênero
+        card.classList.add("faded"); // Aplicar o efeito de desfoque
+      }
+    });
+  }
+</script>
+
+<script>
+  function generateAlphabetMenu() {
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var alphabetMenu = document.getElementById("alphabet-menu");
+
+    for (var i = 0; i < alphabet.length; i++) {
+      var letter = alphabet[i];
+      var letterLink = document.createElement("a");
+      letterLink.href = "#";
+      letterLink.textContent = letter;
+      letterLink.onclick = function() {
+        filterByLetter(this.textContent);
+        return false;
+      };
+      alphabetMenu.appendChild(letterLink);
+    }
+  }
+
+  function filterByLetter(letter) {
+  var cards = document.querySelectorAll(".anime-catalog .anime-item");
+  cards.forEach(function(card) {
+    var title = card.querySelector("h3").innerText;
+    if (title.toUpperCase().startsWith(letter)) {
+      card.style.display = ""; // Exibir o card se começar com a letra selecionada
+      card.classList.remove("faded"); // Remover o efeito de desfoque
+    } else {
+      card.style.display = "none"; // Ocultar o card se não começar com a letra selecionada
+      card.classList.add("faded"); // Aplicar o efeito de desfoque
+    }
+  });
+}
+
+
+  window.onload = function() {
+    generateAlphabetMenu();
+  };
+</script>
+<script>
+  // Dados dos animes
+  var animeData = [
+    { title: "Ninja Kamui", genre: "Ação" },
+    { title: "Wind Breaker", genre: "Aventura" },
+    { title: "Kaiju Eigth", genre: "Ação" },
+    { title: "kenka dokugaku", genre: "Ação" },
+    { title: "One Piece", genre: "Aventura" },
+    { title: "My Hero Academy", genre: "Ação" },
+    { title: "Solo Leveling", genre: "Aventura" },
+    { title: "Jujutsu Kaisen", genre: "Ação" },
+    { title: "Mashle Muscle", genre: "Aventura" },
+    { title: "Naruto Shippuden", genre: "Ação" },
+    { title: "Ragna Crimson", genre: "Aventura" },
+    { title: "Blade of the Guardians", genre: "Ação" },
+    { title: "Tensei Shitara", genre: "Isekai" },
+    { title: "Tokyo Revengers", genre: "Isekai" },
+    { title: "Full Metal Alchimist", genre: "Ação" },
+    { title: "Bleach Sennen Kessen", genre: "Ação" },
+    { title: "Kimetsu No Yaiba", genre: "Ação" },
+    { title: "Left Hand Layup", genre: "Aventura" },
+    { title: "Undead Unlock", genre: "Aventura" },
+    { title: "Fairy Tail", genre: "Aventura" },
+    { title: "Tate No Yuusha", genre: "Isekai" },
+    { title: "Nanatsu No Taizai", genre: "Ação" },
+    { title: "Kung Fu Panda", genre: "Ficção" },
+    { title: "One Piece Red", genre: "Aventura" },
+    { title: "Jujutsu Kaisen 0", genre: "Ação" },
+    { title: "Boruto Next Generation", genre: "Aventura" },
+    { title: "No Game Life", genre: "Isekai" },
+    { title: "Monsters Ippyaku", genre: "Filme" },
+    { title: "A Lenda De Beowulf", genre: "Ficção" },
+    { title: "Ao No Exorcist", genre: "Aventura" },
+    { title: "Bakuten Movie", genre: "Ficção" },
+    { title: "Kono-subarashii", genre: "Isekai" },
+    { title: "Boku No Hero Movie", genre: "Ação" },
+    { title: "Transformers O Despertar", genre: "Filme" },
+    { title: "O Retorno Dos Thundermans", genre: "Filme" },
+    { title: "Projeto Extracao", genre: "Filme" },
+    { title: "Missão Impossivel", genre: "Filme" },
+    { title: "Madame Teia", genre: "Filme" },
+    { title: "Pequenos Espiões", genre: "Filme" },
+    { title: "O Pequenino", genre: "Filme" },
+    { title: "Ritual de Inverno", genre: "Filme" },
+    { title: "Percy Jackson", genre: "Filme" },
+    { title: "Saint Seya", genre: "Filme" },
+    { title: "Beekeeper", genre: "Filme" },
+    { title: "Avatar", genre: "Filme" },
+    { title: "As Marvels", genre: "Filme" },
+    { title: "Gran Turismo", genre: "Filme" },
+    { title: "Aqua Man 2", genre: "Filme" },
+    { title: "Doutinador", genre: "Filme" },
+    { title: "300", genre: "Filme" },
+    { title: "Os Quatro 3", genre: "Filme" },
+    { title: "Os Quatro 2", genre: "Filme" },
+    { title: "A Freira 2", genre: "Filme" },
+    { title: "Não Adianta Rezar", genre: "Filme" },
+    { title: "Anabelle 2", genre: "Filme" },
+    // Adicione mais animes conforme necessário
+  ];
+
+  // Função para adicionar os cards de anime
+  function addAnimeCards(containerSelector, animeList) {
+    var container = document.querySelector(containerSelector);
+    animeList.forEach(function(anime) {
+      var card = document.createElement("div");
+      card.className = "anime-card";
+      card.innerHTML = `
+        <a href="#">
+          <img src="placeholder.jpg" alt="${anime.title}">
+          <span>${anime.title}</span>
+          <div class="play-icon"><i class="fas fa-play"></i></div>
+        </a>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Adicionando cards de animes recentes
+  addAnimeCards(".anime-queue:nth-of-type(1)", animeData.slice(0, 5));
+  // Adicionando cards de animes épicos
+  addAnimeCards(".anime-queue:nth-of-type(2)", animeData.slice(11, 22));
+  // Adicionando cards de filmes de anime
+  addAnimeCards(".anime-queue:nth-of-type(3)", animeData.slice(22));
+
+  // Filtrar animes por letra
+  function filterByLetter(letter) {
+    var cards = document.querySelectorAll(".anime-card");
+    cards.forEach(function(card) {
+      var title = card.querySelector("span").textContent.toLowerCase();
+      if (title.startsWith(letter.toLowerCase())) {
+        card.style.display = "inline-block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  // Filtrar animes por gênero
+  function filterByGenre(genre) {
+    var cards = document.querySelectorAll(".anime-card");
+    cards.forEach(function(card) {
+      var title = card.querySelector("span").textContent;
+      if (animeData.find(anime => anime.title === title && anime.genre === genre)) {
+        card.style.display = "inline-block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+</script>
+
+
+</body>
+</html>
